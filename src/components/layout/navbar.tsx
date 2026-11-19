@@ -32,7 +32,7 @@ const NAV_LINKS = [
 export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  
+ 
   const { data: session, isPending } = authClient.useSession();
   const [open, setOpen] = useState(false);
 
@@ -71,7 +71,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-       
+        
         <Link
           href="/"
           className="font-heading text-2xl font-semibold text-rose-dark"
@@ -79,7 +79,7 @@ export function Navbar() {
           WedPlan
         </Link>
 
-       
+        
         <nav className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((link) => (
             <Link
@@ -95,7 +95,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-         
+          
           <div className="hidden items-center gap-2 md:flex">
             {isPending ? (
               <Skeleton className="h-9 w-9 rounded-full" />
@@ -161,7 +161,7 @@ export function Navbar() {
             )}
           </div>
 
-         
+          
           <Button
             variant="ghost"
             size="icon"
