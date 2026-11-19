@@ -1,0 +1,33 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+
+// কার্ড লোড হওয়ার আগে এর জায়গায় ধূসর ঝিলিক দেখায়
+export function ServiceCardSkeleton() {
+  return (
+    <Card className="h-full gap-0 overflow-hidden py-0">
+      <Skeleton className="aspect-4/3 w-full rounded-none" />
+      <CardContent className="space-y-3 p-4">
+        <Skeleton className="h-5 w-3/4" />
+        <div className="flex justify-between">
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-4 w-16" />
+        </div>
+        <div className="flex items-center gap-2 border-t pt-3">
+          <Skeleton className="h-7 w-7 rounded-full" />
+          <Skeleton className="h-4 w-28" />
+        </div>
+        <Skeleton className="h-9 w-full" />
+      </CardContent>
+    </Card>
+  );
+}
+
+export function ServiceGridSkeleton({ count = 6 }: { count?: number }) {
+  return (
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {Array.from({ length: count }).map((_, i) => (
+        <ServiceCardSkeleton key={i} />
+      ))}
+    </div>
+  );
+}
