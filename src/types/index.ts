@@ -21,3 +21,10 @@ export interface Service {
   vendor?: ServiceVendor;
   createdAt: string;
 }
+
+export interface ServicesResponse {
+  items: Service[];
+  total: number;
+  page: number;
+  totalPages: number;
+}

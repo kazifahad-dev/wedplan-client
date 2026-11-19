@@ -8,3 +8,12 @@ export const CATEGORIES = [
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];
+
+export const POPULAR_LOCATIONS = [
+  "Dhaka",
+  "Chattogram",
+  "Sylhet",
+  "Rajshahi",
+  "Khulna",
+  "Cox's Bazar",
+];
