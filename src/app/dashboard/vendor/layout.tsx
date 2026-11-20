@@ -1,4 +1,5 @@
 import { requireRole } from "@/lib/guards";
+import { DashboardShell } from "@/components/dashboard/dashboard-shell";
 
 export default async function VendorLayout({
   children,
@@ -6,5 +7,5 @@ export default async function VendorLayout({
   children: React.ReactNode;
 }) {
   await requireRole("vendor");
-  return <>{children}</>;
+  return <DashboardShell role="vendor">{children}</DashboardShell>;
 }

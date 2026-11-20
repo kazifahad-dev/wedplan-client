@@ -1,4 +1,5 @@
 import { requireRole } from "@/lib/guards";
+import { DashboardShell } from "@/components/dashboard/dashboard-shell";
 
 export default async function AdminLayout({
   children,
@@ -6,5 +7,5 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   await requireRole("admin");
-  return <>{children}</>;
+  return <DashboardShell role="admin">{children}</DashboardShell>;
 }

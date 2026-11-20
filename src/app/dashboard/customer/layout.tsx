@@ -1,4 +1,5 @@
 import { requireRole } from "@/lib/guards";
+import { DashboardShell } from "@/components/dashboard/dashboard-shell";
 
 export default async function CustomerLayout({
   children,
@@ -6,5 +7,5 @@ export default async function CustomerLayout({
   children: React.ReactNode;
 }) {
   await requireRole("customer");
-  return <>{children}</>;
+  return <DashboardShell role="customer">{children}</DashboardShell>;
 }
