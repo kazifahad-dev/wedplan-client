@@ -9,7 +9,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
-import { SectionHeading } from "../section-heading";
+import { SectionHeading } from "./section-heading";
 import { CATEGORIES } from "@/lib/constants";
 import { getCategoryCounts } from "@/lib/data";
 

@@ -1,5 +1,5 @@
 import { FadeIn } from "@/components/motion/fade-in";
-import { SectionHeading } from "../section-heading";
+import { SectionHeading } from "./section-heading";
 
 const STEPS = [
   {

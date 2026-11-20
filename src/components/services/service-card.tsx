@@ -16,7 +16,7 @@ export function ServiceCard({ service }: { service: Service }) {
   return (
     <Card className="group h-full gap-0 overflow-hidden py-0 transition-shadow hover:shadow-lg">
       {/* ছবি */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+      <div className="relative aspect-4/3 overflow-hidden bg-secondary">
         {cover && (
           <Image
             src={cover}

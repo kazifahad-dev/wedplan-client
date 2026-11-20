@@ -2,7 +2,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { FadeIn } from "@/components/motion/fade-in";
 import { ServiceCard } from "@/components/services/service-card";
-import { SectionHeading } from "../section-heading";
+import { SectionHeading } from "./section-heading";
 import { getFeaturedServices } from "@/lib/data";
 
 export async function FeaturedServices() {

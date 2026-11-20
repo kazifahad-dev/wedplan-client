@@ -17,3 +17,5 @@ export const POPULAR_LOCATIONS = [
   "Khulna",
   "Cox's Bazar",
 ];
+
+export const FREE_SERVICE_LIMIT = 3;

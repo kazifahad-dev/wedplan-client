@@ -46,3 +46,21 @@ export interface CustomerBooking {
   };
   vendor?: { name?: string; businessName?: string; image?: string };
 }
+
+
+export interface VendorBooking {
+  _id: string;
+  eventDate: string;
+  eventLocation: string;
+  message?: string;
+  status: BookingStatus;
+  createdAt: string;
+  service?: { _id?: string; serviceName?: string };
+  customer?: { name?: string; email?: string; image?: string };
+}
+
+
+export interface SubscriptionInfo {
+  plan: "free" | "premium";
+  expiresAt: string | null;
+}

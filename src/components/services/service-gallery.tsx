@@ -13,13 +13,13 @@ export function ServiceGallery({
   const [active, setActive] = useState(0);
 
   if (!images.length) {
-    return <div className="aspect-[4/3] rounded-xl bg-secondary" />;
+    return <div className="aspect-4/3 rounded-xl bg-secondary" />;
   }
 
   return (
     <div className="space-y-3">
-      {/* বড় ছবি */}
-      <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-secondary">
+      
+      <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-secondary">
         <Image
           key={active}
           src={images[active]}
