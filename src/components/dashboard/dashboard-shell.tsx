@@ -37,18 +37,19 @@ function SidebarContent({
   }
 
   async function handleLogout() {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          toast.success("Logged out successfully");
-          router.push("/");
-          router.refresh();
-        },
-        onError: () => toast.error("Logout failed. Please try again."),
+  await authClient.signOut({
+    fetchOptions: {
+      onSuccess: () => {
+        toast.success("Logged out successfully");
+        router.push("/");
+        router.refresh();
       },
-    });
-  }
-
+      onError: () => {
+        toast.error("Logout failed. Please try again.");
+      },
+    },
+  });
+}
   return (
     <div className="flex h-full flex-col">
       <div className="border-b px-5 py-4">

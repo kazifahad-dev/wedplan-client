@@ -55,18 +55,19 @@ export function Navbar() {
   }
 
   async function handleLogout() {
-    setOpen(false);
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          toast.success("Logged out successfully");
-          router.push("/");
-          router.refresh();
-        },
-        onError: () => toast.error("Logout failed. Please try again."),
+  await authClient.signOut({
+    fetchOptions: {
+      onSuccess: () => {
+        toast.success("Logged out successfully");
+        router.push("/");
+        router.refresh();
       },
-    });
-  }
+      onError: () => {
+        toast.error("Logout failed. Please try again.");
+      },
+    },
+  });
+}
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/85 backdrop-blur">
