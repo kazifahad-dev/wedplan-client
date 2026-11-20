@@ -28,3 +28,21 @@ export interface ServicesResponse {
   page: number;
   totalPages: number;
 }
+
+export type BookingStatus = "pending" | "accepted" | "rejected" | "cancelled";
+
+export interface CustomerBooking {
+  _id: string;
+  eventDate: string;
+  eventLocation: string;
+  message?: string;
+  status: BookingStatus;
+  createdAt: string;
+  service?: {
+    _id?: string;
+    serviceName?: string;
+    price?: number;
+    image?: string;
+  };
+  vendor?: { name?: string; businessName?: string; image?: string };
+}
