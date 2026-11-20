@@ -1,5 +1,8 @@
-import { DashboardPlaceholder } from "@/components/dashboard/placeholder";
+import type { Metadata } from "next";
+import { AdminOverview } from "@/components/dashboard/admin/admin-overview";
 
-export default function AdminDashboard() {
-  return <DashboardPlaceholder title="Admin Dashboard" />;
+export const metadata: Metadata = { title: "Admin Dashboard" };
+
+export default function AdminDashboardPage() {
+  return <AdminOverview />;
 }

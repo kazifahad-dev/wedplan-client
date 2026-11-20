@@ -64,3 +64,62 @@ export interface SubscriptionInfo {
   plan: "free" | "premium";
   expiresAt: string | null;
 }
+
+
+export interface PaymentStatus {
+  confirmed: boolean;
+  plan?: string;
+  amount?: number;
+  currency?: string;
+  status?: string;
+}
+
+export interface Paginated<T> {
+  items: T[];
+  total: number;
+  page: number;
+  totalPages: number;
+}
+
+export interface AdminStats {
+  totalUsers: number;
+  totalVendors: number;
+  totalCustomers: number;
+  totalServices: number;
+  pendingServices: number;
+  totalTransactions: number;
+}
+
+export type UserRole = "admin" | "vendor" | "customer";
+
+export interface AdminUser {
+  _id: string;
+  name: string;
+  email: string;
+  image?: string | null;
+  role: UserRole;
+  isBlocked?: boolean;
+  businessName?: string | null;
+  subscriptionPlan?: string | null;
+  subscriptionExpiresAt?: string | null;
+  createdAt?: string;
+}
+
+export interface AdminVendorInfo {
+  name?: string;
+  email?: string;
+  businessName?: string;
+}
+
+
+export type AdminService = Omit<Service, "vendor"> & { vendor?: AdminVendorInfo };
+
+export interface AdminTransaction {
+  _id: string;
+  plan: string;
+  amount: number;
+  currency: string;
+  status: string;
+  createdAt: string;
+  vendor?: AdminVendorInfo;
+}

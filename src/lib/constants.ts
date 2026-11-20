@@ -19,3 +19,5 @@ export const POPULAR_LOCATIONS = [
 ];
 
 export const FREE_SERVICE_LIMIT = 3;
+
+export const PREMIUM_PRICE = 19.99; 

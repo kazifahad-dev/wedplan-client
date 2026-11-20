@@ -10,6 +10,7 @@ const STYLES: Record<string, string> = {
   failed: "bg-red-100 text-red-800",
   cancelled: "bg-gray-200 text-gray-700",
   inactive: "bg-gray-200 text-gray-700",
+  blocked: "bg-red-100 text-red-800",
 };
 
 export function StatusBadge({ status }: { status: string }) {
