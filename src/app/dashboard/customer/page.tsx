@@ -1,5 +1,8 @@
-import { DashboardPlaceholder } from "@/components/dashboard/placeholder";
+import type { Metadata } from "next";
+import { CustomerOverview } from "@/components/dashboard/customer/customer-overview";
 
-export default function CustomerDashboard() {
-  return <DashboardPlaceholder title="Customer Dashboard" />;
+export const metadata: Metadata = { title: "Customer Dashboard" };
+
+export default function CustomerDashboardPage() {
+  return <CustomerOverview />;
 }
