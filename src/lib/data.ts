@@ -1,12 +1,13 @@
+import { cache } from "react";
 import type { Service } from "@/types";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 
-// সার্ভার বন্ধ বা এরর হলেও পেজ ভাঙবে না, খালি তালিকা ফেরত দেয়
+
 export async function getFeaturedServices(): Promise<Service[]> {
   try {
     const res = await fetch(`${API}/api/services/featured`, {
-      cache: "no-store", // সবসময় ডাটাবেসের সর্বশেষ তথ্য
+      cache: "no-store", 
     });
     if (!res.ok) return [];
     return await res.json();
@@ -27,3 +28,25 @@ export async function getCategoryCounts(): Promise<Record<string, number>> {
     return {};
   }
 }
+
+export type ServiceResult =
+  | { status: "ok"; service: Service }
+  | { status: "not-found" }
+  | { status: "error" };
+
+
+export const getService = cache(async (id: string): Promise<ServiceResult> => {
+  
+  if (!/^[0-9a-fA-F]{24}$/.test(id)) return { status: "not-found" };
+
+  try {
+    const res = await fetch(`${API}/api/services/${id}`, {
+      cache: "no-store",
+    });
+    if (res.status === 404 || res.status === 400) return { status: "not-found" };
+    if (!res.ok) return { status: "error" };
+    return { status: "ok", service: await res.json() };
+  } catch {
+    return { status: "error" };
+  }
+});
