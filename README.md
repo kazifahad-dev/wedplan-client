@@ -8,8 +8,8 @@ This repository is the **client** (Next.js). The Express API lives in a separate
 
 | | Link |
 |---|---|
-| Live Website |[https://wedplan-client-puce.vercel.app](https://wedplan-client-puce.vercel.app) 
-| Live API | `https://wedplan-server-tau.vercel.app` |
+| Live Website | [https://wedplan-client-puce.vercel.app](https://wedplan-client-puce.vercel.app) |
+| Live API | [https://wedplan-server-tau.vercel.app](https://wedplan-server-tau.vercel.app) |
 | Client Repository | https://github.com/kazifahad-dev/wedplan-client |
 | Server Repository | https://github.com/kazifahad-dev/wedplan-server |
 
@@ -130,7 +130,7 @@ Only `NEXT_PUBLIC_API_URL` is exposed to the browser. Stripe keys live only in t
 | Local client | `http://localhost:3000` |
 | Local server | `http://localhost:5000` |
 | Google OAuth authorized redirect URI (local) | `http://localhost:3000/api/auth/callback/google` |
-| Google OAuth authorized redirect URI (production) | `https://YOUR-CLIENT-URL.vercel.app/api/auth/callback/google` |
+| Google OAuth authorized redirect URI (production) | `https://wedplan-client-puce.vercel.app/api/auth/callback/google` |
 | Stripe success page | `/payment/success` |
 | Stripe cancel page | `/payment/cancel` |
 
