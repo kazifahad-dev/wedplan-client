@@ -1,6 +1,8 @@
-// import { DashboardPlaceholder } from "@/components/dashboard/placeholder";
-import { DashboardPlaceholder } from "@/components/dashboard/dashboard-placeholder";
+import type { Metadata } from "next";
+import { VendorOverview } from "@/components/dashboard/vendor/vendor-overview";
 
-export default function VendorDashboard() {
-  return <DashboardPlaceholder title="Vendor Dashboard" />;
+export const metadata: Metadata = { title: "Vendor Dashboard" };
+
+export default function VendorDashboardPage() {
+  return <VendorOverview />;
 }

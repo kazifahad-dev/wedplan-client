@@ -1,8 +1,13 @@
-import type { Metadata } from "next";
-import { VendorOverview } from "@/components/dashboard/vendor/vendor-overview";
+import { redirect } from "next/navigation";
+import { getServerSession } from "@/lib/session";
+import { getDashboardPath } from "@/lib/roles";
 
-export const metadata: Metadata = { title: "Vendor Dashboard" };
 
-export default function VendorDashboardPage() {
-  return <VendorOverview />;
+export default async function DashboardIndex() {
+  const session = await getServerSession();
+
+  if (!session) redirect("/sign-in?callback=/dashboard");
+  if (session.user.isBlocked) redirect("/sign-in");
+
+  redirect(getDashboardPath(session.user.role));
 }
