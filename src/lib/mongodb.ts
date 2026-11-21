@@ -2,21 +2,22 @@ import { MongoClient } from "mongodb";
 import { attachDatabasePool } from "@vercel/functions";
 
 const uri = process.env.MONGODB_URI;
-if (!uri) throw new Error("MONGODB_URI .env.local not found in file");
+if (!uri) throw new Error("MONGODB_URI .env.local not in file");
 
 const mongoUri: string = uri;
 
-const globalForMongo = globalThis as unknown as { _mongoClient?: MongoClient };
+const globalForMongo = globalThis as unknown as {
+  _mongoClient?: MongoClient;
+  _mongoReady?: Promise<MongoClient>;
+};
 
 function createClient(): MongoClient {
   const newClient = new MongoClient(mongoUri, {
     maxPoolSize: 10,
-   
     maxIdleTimeMS: 5000,
     serverSelectionTimeoutMS: 10000,
   });
 
-  
   if (process.env.VERCEL) {
     attachDatabasePool(newClient);
   }
@@ -28,5 +29,14 @@ function createClient(): MongoClient {
 const client: MongoClient =
   globalForMongo._mongoClient ??
   (globalForMongo._mongoClient = createClient());
+
+
+if (!globalForMongo._mongoReady) {
+  globalForMongo._mongoReady = client.connect().catch((err) => {
+    globalForMongo._mongoReady = undefined;
+    throw err;
+  });
+}
+await globalForMongo._mongoReady;
 
 export default client;
