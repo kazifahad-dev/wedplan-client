@@ -8,7 +8,7 @@ This repository is the **client** (Next.js). The Express API lives in a separate
 
 | | Link |
 |---|---|
-| Live Website | `https://wedplan-client-puce.vercel.app` |
+| Live Website |[https://wedplan-client-puce.vercel.app](https://wedplan-client-puce.vercel.app) 
 | Live API | `https://wedplan-server-tau.vercel.app` |
 | Client Repository | https://github.com/kazifahad-dev/wedplan-client |
 | Server Repository | https://github.com/kazifahad-dev/wedplan-server |
