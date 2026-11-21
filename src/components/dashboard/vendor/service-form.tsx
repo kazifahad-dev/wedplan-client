@@ -16,7 +16,7 @@ import { SELECT_CLASS } from "@/lib/styles";
 import type { Service } from "@/types";
 
 interface ServiceFormProps {
-  initial?: Service; // থাকলে এডিট, না থাকলে নতুন সার্ভিস
+  initial?: Service; 
   submitLabel: string;
   onSuccess: () => void;
 }
@@ -40,7 +40,7 @@ export function ServiceForm({ initial, submitLabel, onSuccess }: ServiceFormProp
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    // ফ্রন্টএন্ডের যাচাই (সার্ভারও আবার যাচাই করে)
+    
     if (serviceName.trim().length < 3) return fail("Service name must be at least 3 characters");
     if (!category) return fail("Please select a category");
     if (description.trim().length < 10) return fail("Description must be at least 10 characters");
@@ -51,10 +51,10 @@ export function ServiceForm({ initial, submitLabel, onSuccess }: ServiceFormProp
 
     setLoading(true);
     try {
-      // ১. নতুন ছবিগুলো ImgBB-তে আপলোড (একসাথে)
+      
       const uploaded = await Promise.all(files.map((f) => uploadImage(f)));
 
-      // ২. সার্ভিস সেভ। vendorId বা status পাঠাই না, ওগুলো সার্ভার নিজে বসায়
+      
       const payload = {
         serviceName: serviceName.trim(),
         category,
@@ -74,7 +74,7 @@ export function ServiceForm({ initial, submitLabel, onSuccess }: ServiceFormProp
     } catch (err) {
       const message = err instanceof Error ? err.message : "Something went wrong";
       if (message.includes("Free plan")) {
-        // ফ্রি প্ল্যানের সীমা: আপগ্রেডের লিংক দেখাই
+        
         toast.error(message, {
           action: {
             label: "Upgrade",

@@ -36,7 +36,7 @@ export function AdminOverview() {
         <StatCard label="Total Transactions" value={data?.totalTransactions} icon={Receipt} />
       </div>
 
-      {/* রিভিউয়ের অপেক্ষায় সার্ভিস থাকলে মনে করিয়ে দিই */}
+      
       {data && data.pendingServices > 0 && (
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4">
           <p className="text-sm text-amber-900">

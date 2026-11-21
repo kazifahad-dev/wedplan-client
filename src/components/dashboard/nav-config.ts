@@ -18,7 +18,7 @@ export interface NavItem {
   href: string;
   label: string;
   icon: LucideIcon;
-  exact?: boolean; // Overview শুধু হুবহু মিললেই সক্রিয়
+  exact?: boolean; 
 }
 
 export const DASHBOARD_NAV: Record<

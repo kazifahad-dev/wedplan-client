@@ -50,13 +50,13 @@ export function SubscriptionPlans() {
   async function handleUpgrade() {
     setRedirecting(true);
     try {
-      // সার্ভার Stripe Checkout Session বানিয়ে URL দেয়। vendorId সার্ভার টোকেন থেকে নেয়
+     
       const { url } = await apiFetch<{ url: string | null }>(
         "/api/payments/create-checkout-session",
         { method: "POST", body: JSON.stringify({}) }
       );
       if (!url) throw new Error("Could not start checkout");
-      window.location.href = url; // Stripe-এর পেজে যাই
+      window.location.href = url; 
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not start checkout");
       setRedirecting(false);
@@ -88,7 +88,7 @@ export function SubscriptionPlans() {
 
       {data && (
         <div className="grid max-w-4xl gap-6 md:grid-cols-2">
-          {/* ফ্রি প্ল্যান */}
+          
           <Card className={`py-0 ${!isPremium ? "border-primary ring-1 ring-primary" : ""}`}>
             <CardContent className="space-y-5 p-6">
               <div className="flex items-center justify-between">
@@ -103,7 +103,7 @@ export function SubscriptionPlans() {
             </CardContent>
           </Card>
 
-          {/* প্রিমিয়াম প্ল্যান */}
+          
           <Card className={`py-0 ${isPremium ? "border-gold ring-1 ring-gold" : ""}`}>
             <CardContent className="space-y-5 p-6">
               <div className="flex items-center justify-between">

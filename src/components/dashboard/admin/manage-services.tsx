@@ -245,7 +245,7 @@ export function ManageServices({ initialStatus }: { initialStatus?: string }) {
         )}
       </Card>
 
-      {/* সার্ভিসের বিবরণ */}
+     
       <Dialog open={!!viewing} onOpenChange={(o) => !o && setViewing(null)}>
         <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-xl">
           {viewing && (
@@ -286,7 +286,7 @@ export function ManageServices({ initialStatus }: { initialStatus?: string }) {
         </DialogContent>
       </Dialog>
 
-      {/* ডিলিট নিশ্চিতকরণ */}
+      
       <Dialog open={!!deleting} onOpenChange={(o) => !o && !deletingNow && setDeleting(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>

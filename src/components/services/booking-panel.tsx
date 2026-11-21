@@ -20,11 +20,11 @@ import { apiFetch } from "@/lib/api";
 interface BookingPanelProps {
   serviceId: string;
   serviceName: string;
-  blockedReason: string | null; // বুক করা নিষেধ থাকলে কারণ
+  blockedReason: string | null; 
   isCustomer: boolean;
 }
 
-// আগামীকালের তারিখ (YYYY-MM-DD)। সার্ভার অতীতের তারিখ গ্রহণ করে না
+
 function tomorrow() {
   return new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 }
@@ -42,7 +42,7 @@ export function BookingPanel({
   const [eventLocation, setEventLocation] = useState("");
   const [message, setMessage] = useState("");
 
-  // বুক করার অনুমতি না থাকলে ফর্মের বদলে কারণ দেখাই
+  
   if (blockedReason) {
     return (
       <div className="flex gap-2 rounded-lg bg-secondary p-4 text-sm text-rose-dark">
@@ -91,7 +91,7 @@ export function BookingPanel({
       setEventLocation("");
       setMessage("");
     } catch (err) {
-      // সার্ভারের বার্তাই দেখাই (যেমন ডুপ্লিকেট বুকিং, নিজের সার্ভিস ইত্যাদি)
+      
       toast.error(err instanceof Error ? err.message : "Booking failed");
     } finally {
       setLoading(false);

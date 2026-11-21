@@ -8,12 +8,12 @@ import { buttonVariants } from "@/components/ui/button";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-secondary via-background to-accent">
-      {/* ঝাপসা সাজসজ্জার বৃত্ত */}
+     
       <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-gold/20 blur-3xl" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
-        {/* লেখা */}
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* বিয়ের থিমের ইলাস্ট্রেশন: দুটো আংটি */}
+      
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

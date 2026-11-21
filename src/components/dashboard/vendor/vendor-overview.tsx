@@ -26,9 +26,9 @@ export function VendorOverview() {
 
   const list = services.data;
   const total = list?.length;
-  // "Active" মানে approved এবং চালু
+  
   const active = list?.filter((s) => s.status === "approved" && s.isActive).length;
-  // ফ্রি প্ল্যানের সীমায় যা গোনা হয় (rejected বাদে চালু সব)
+  
   const usedSlots =
     list?.filter((s) => s.isActive && s.status !== "rejected").length ?? 0;
 
@@ -78,7 +78,7 @@ export function VendorOverview() {
         />
       </div>
 
-      {/* প্ল্যান ব্যবহার */}
+      
       {plan && list && (
         <Card className="mt-6 py-0">
           <CardContent className="space-y-3 p-5">
@@ -117,7 +117,7 @@ export function VendorOverview() {
         </Card>
       )}
 
-      {/* অপেক্ষমাণ বুকিং রিকোয়েস্ট */}
+      
       {pending && pending.length > 0 && (
         <section className="mt-8">
           <div className="mb-3 flex items-center justify-between">

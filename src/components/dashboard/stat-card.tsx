@@ -2,7 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-// value না থাকলে (ডাটা লোড হচ্ছে) স্কেলিটন দেখায়
+
 export function StatCard({
   label,
   value,

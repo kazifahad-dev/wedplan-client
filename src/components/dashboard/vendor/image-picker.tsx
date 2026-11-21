@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { Label } from "@/components/ui/label";
 
 const MAX_IMAGES = 5;
-const MAX_SIZE = 5 * 1024 * 1024; // ৫ MB
+const MAX_SIZE = 5 * 1024 * 1024; 
 
 function Thumb({
   src,
@@ -21,7 +21,7 @@ function Thumb({
 }) {
   return (
     <div className="relative aspect-square overflow-hidden rounded-lg border bg-secondary">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+      
       <img src={src} alt={label} className="h-full w-full object-cover" />
       {cover && (
         <span className="absolute bottom-1 left-1 rounded bg-black/60 px-1.5 py-0.5 text-[10px] text-white">
@@ -41,9 +41,9 @@ function Thumb({
 }
 
 interface ImagePickerProps {
-  existing: string[]; // আগে থেকে আপলোড করা ছবির URL
+  existing: string[]; 
   onExistingChange: (urls: string[]) => void;
-  files: File[]; // নতুন বাছা, এখনো আপলোড হয়নি
+  files: File[]; 
   onFilesChange: (files: File[]) => void;
 }
 
@@ -53,7 +53,7 @@ export function ImagePicker({
   files,
   onFilesChange,
 }: ImagePickerProps) {
-  // নতুন ফাইলের প্রিভিউ URL
+  
   const previews = useMemo(
     () => files.map((f) => URL.createObjectURL(f)),
     [files]
@@ -67,7 +67,7 @@ export function ImagePicker({
 
   function handlePick(e: React.ChangeEvent<HTMLInputElement>) {
     const picked = Array.from(e.target.files ?? []);
-    e.target.value = ""; // একই ফাইল আবার বাছা যাবে
+    e.target.value = ""; 
 
     const valid: File[] = [];
     for (const file of picked) {

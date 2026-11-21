@@ -128,7 +128,7 @@ export function DashboardShell({
 
   return (
     <div className="min-h-screen bg-secondary/30 lg:pl-64">
-      {/* ডেস্কটপ সাইডবার */}
+      
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 border-r bg-background lg:block">
         <SidebarContent role={role} />
       </aside>

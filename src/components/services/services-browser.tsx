@@ -24,19 +24,19 @@ export function ServicesBrowser() {
   const params = useSearchParams();
   const topRef = useRef<HTMLDivElement>(null);
 
-  // URL-এর ফিল্টারগুলোই আসল তথ্য (single source of truth)
+  
   const urlSearch = params.get("search") ?? "";
   const urlLocation = params.get("location") ?? "";
   const category = params.get("category") ?? "";
   const sort = params.get("sort") ?? "";
   const page = Math.max(parseInt(params.get("page") ?? "1") || 1, 1);
 
-  // টাইপ করার সময়কার অস্থায়ী মান (debounce-এর জন্য)
+  
   const [search, setSearch] = useState(urlSearch);
   const [location, setLocation] = useState(urlLocation);
-  const [attempt, setAttempt] = useState(0); // "Try again" বাটনের জন্য
+  const [attempt, setAttempt] = useState(0); 
 
-  // URL-এর একটা বা একাধিক প্যারামিটার বদলানোর ফাংশন
+  
   const updateParams = useCallback(
     (changes: Record<string, string | null>) => {
       const next = new URLSearchParams(params.toString());
@@ -50,21 +50,21 @@ export function ServicesBrowser() {
     [params, pathname, router]
   );
 
-  // সার্চ ও লোকেশনে টাইপ থামার ০.৪ সেকেন্ড পরে URL আপডেট
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       if (search.trim() !== urlSearch || location.trim() !== urlLocation) {
         updateParams({
           search: search.trim() || null,
           location: location.trim() || null,
-          page: null, // ফিল্টার বদলালে আবার প্রথম পেজ থেকে
+          page: null, 
         });
       }
     }, 400);
     return () => clearTimeout(timer);
   }, [search, location, urlSearch, urlLocation, updateParams]);
 
-  // সার্ভারে পাঠানোর কোয়েরি স্ট্রিং
+  
   const queryString = useMemo(() => {
     const qs = new URLSearchParams();
     if (urlSearch) qs.set("search", urlSearch);
@@ -79,7 +79,7 @@ export function ServicesBrowser() {
   const requestKey = `${queryString}#${attempt}`;
   const [result, setResult] = useState<Result | null>(null);
 
-  // ফলাফল যে রিকোয়েস্টের, সেটা এখনকার রিকোয়েস্টের সাথে না মিললে মানে লোড হচ্ছে
+  
   const loading = result?.key !== requestKey;
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export function ServicesBrowser() {
       })
       .then((data) => setResult({ key: requestKey, data }))
       .catch((err) => {
-        // নতুন ফিল্টারে আগের রিকোয়েস্ট বাতিল হলে সেটা এরর নয়
+        
         if (err.name !== "AbortError") {
           setResult({ key: requestKey, failed: true });
         }
@@ -118,7 +118,7 @@ export function ServicesBrowser() {
 
   return (
     <div ref={topRef} className="scroll-mt-24 space-y-8">
-      {/* ফিল্টার বার */}
+      
       <div className="grid gap-3 rounded-xl border bg-card p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
         <div className="relative">
           <label htmlFor="search" className="sr-only">
@@ -194,7 +194,7 @@ export function ServicesBrowser() {
         </div>
       </div>
 
-      {/* ফলাফলের সংখ্যা ও ফিল্টার মুছুন বাটন */}
+      
       <div className="flex min-h-9 items-center justify-between">
         <p className="text-sm text-muted-foreground">
           {data
@@ -211,10 +211,10 @@ export function ServicesBrowser() {
         )}
       </div>
 
-      {/* লোডিং অবস্থা */}
+      
       {loading && <ServiceGridSkeleton count={PAGE_SIZE > 6 ? 6 : PAGE_SIZE} />}
 
-      {/* এরর অবস্থা */}
+      
       {failed && (
         <div className="rounded-xl border border-dashed p-12 text-center">
           <p className="font-medium text-destructive">
@@ -229,7 +229,7 @@ export function ServicesBrowser() {
         </div>
       )}
 
-      {/* খালি অবস্থা */}
+      
       {data && data.items.length === 0 && (
         <div className="flex flex-col items-center rounded-xl border border-dashed p-12 text-center">
           <SearchX className="mb-3 h-10 w-10 text-primary" />
@@ -247,7 +247,7 @@ export function ServicesBrowser() {
         </div>
       )}
 
-      {/* সার্ভিসের কার্ড */}
+     
       {data && data.items.length > 0 && (
         <>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -256,7 +256,7 @@ export function ServicesBrowser() {
             ))}
           </div>
 
-          {/* পেজিনেশন */}
+          
           {data.totalPages > 1 && (
             <div className="flex items-center justify-center gap-4 pt-4">
               <Button

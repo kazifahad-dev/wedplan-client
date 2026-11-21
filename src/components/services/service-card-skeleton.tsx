@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-// কার্ড লোড হওয়ার আগে এর জায়গায় ধূসর ঝিলিক দেখায়
+
 export function ServiceCardSkeleton() {
   return (
     <Card className="h-full gap-0 overflow-hidden py-0">

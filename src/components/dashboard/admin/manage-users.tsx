@@ -46,7 +46,7 @@ export function ManageUsers() {
   const [target, setTarget] = useState<{ user: AdminUser; block: boolean } | null>(null);
   const [saving, setSaving] = useState(false);
 
-  // সার্ভারে পাঠানোর কোয়েরি
+  
   const qs = new URLSearchParams({ page: String(page), limit: "10" });
   if (debouncedSearch.trim()) qs.set("search", debouncedSearch.trim());
   if (role) qs.set("role", role);
@@ -80,7 +80,7 @@ export function ManageUsers() {
         description="View registered users and block or unblock accounts"
       />
 
-      {/* সার্চ ও ফিল্টার */}
+      
       <div className="mb-4 grid gap-3 sm:grid-cols-3">
         <div className="relative sm:col-span-2">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -161,7 +161,7 @@ export function ManageUsers() {
                         <Button size="sm" variant="outline" onClick={() => setViewing(u)}>
                           View
                         </Button>
-                        {/* অ্যাডমিন অ্যাকাউন্ট ব্লক করা যায় না (সার্ভারও আটকায়) */}
+                        
                         {u.role !== "admin" && (
                           <Button
                             size="sm"
@@ -187,7 +187,7 @@ export function ManageUsers() {
         )}
       </Card>
 
-      {/* ইউজারের বিবরণ */}
+      
       <Dialog open={!!viewing} onOpenChange={(o) => !o && setViewing(null)}>
         <DialogContent className="sm:max-w-md">
           {viewing && (
@@ -232,7 +232,7 @@ export function ManageUsers() {
         </DialogContent>
       </Dialog>
 
-      {/* ব্লক/আনব্লক নিশ্চিতকরণ */}
+      
       <Dialog open={!!target} onOpenChange={(o) => !o && !saving && setTarget(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>

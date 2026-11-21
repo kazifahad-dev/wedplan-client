@@ -20,7 +20,7 @@ const MAX_ATTEMPTS = 10;
 export function PaymentSuccess() {
   const sessionId = useSearchParams().get("session_id");
   const [phase, setPhase] = useState<Phase>({ name: "checking" });
-  const [round, setRound] = useState(0); // "Check again" বাটনের জন্য
+  const [round, setRound] = useState(0); 
 
   useEffect(() => {
     if (!sessionId) return;
@@ -29,8 +29,7 @@ export function PaymentSuccess() {
     let attempts = 0;
     let timer: ReturnType<typeof setTimeout>;
 
-    // webhook আসতে কয়েক সেকেন্ড লাগতে পারে, তাই প্রতি ২ সেকেন্ডে সার্ভারকে জিজ্ঞেস করি।
-    // রিডাইরেক্ট নিজে কোনো প্রমাণ নয়। Premium চালু হয় শুধু Stripe webhook পেলে
+    
     async function check() {
       try {
         const info = await apiFetch<PaymentStatus>(

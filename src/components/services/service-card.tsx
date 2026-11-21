@@ -46,7 +46,7 @@ export function ServiceCard({ service }: { service: Service }) {
           </span>
         </div>
 
-        {/* ভেন্ডরের তথ্য */}
+       
         <div className="flex items-center gap-2 border-t pt-3">
           <Avatar className="h-7 w-7">
             {service.vendor?.image && (

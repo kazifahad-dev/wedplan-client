@@ -51,12 +51,12 @@ export function BookingRequests() {
         decision.action === "accepted" ? "Booking accepted" : "Booking rejected"
       );
     } catch (err) {
-      // যেমন: "This booking is already cancelled and cannot be changed"
+      
       toast.error(err instanceof Error ? err.message : "Could not update booking");
     } finally {
       setSaving(false);
       setDecision(null);
-      reload(); // সফল বা ব্যর্থ, তালিকা নতুন করে আনি
+      reload(); 
     }
   }
 
@@ -67,7 +67,7 @@ export function BookingRequests() {
         description="Review requests from customers for your services"
       />
 
-      {/* ফিল্টার */}
+      
       <div className="mb-5 flex flex-wrap gap-2">
         {FILTERS.map((f) => (
           <Button
@@ -119,7 +119,7 @@ export function BookingRequests() {
           <Card key={b._id} className="py-0">
             <CardContent className="space-y-4 p-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
-                {/* কাস্টমারের তথ্য */}
+                
                 <div className="flex items-center gap-3">
                   <Avatar className="h-10 w-10">
                     {b.customer?.image && (
@@ -141,7 +141,7 @@ export function BookingRequests() {
                 <StatusBadge status={b.status} />
               </div>
 
-              {/* সার্ভিস ও ইভেন্টের তথ্য */}
+              
               <div className="grid gap-2 text-sm sm:grid-cols-3">
                 <p>
                   <span className="block text-xs text-muted-foreground">Service</span>
@@ -165,7 +165,7 @@ export function BookingRequests() {
                 </p>
               </div>
 
-              {/* কাস্টমারের বার্তা */}
+            
               <div className="rounded-lg bg-secondary/60 p-3 text-sm">
                 <span className="block text-xs text-muted-foreground">
                   Customer message
@@ -180,7 +180,7 @@ export function BookingRequests() {
                   Requested on {formatDate(b.createdAt)}
                 </p>
 
-                {/* শুধু pending রিকোয়েস্টে বাটন */}
+                
                 {b.status === "pending" && (
                   <div className="flex gap-2">
                     <Button
@@ -204,7 +204,7 @@ export function BookingRequests() {
         ))}
       </div>
 
-      {/* নিশ্চিতকরণ: একবার সিদ্ধান্ত নিলে আর বদলানো যায় না */}
+     
       <Dialog open={!!decision} onOpenChange={(o) => !o && !saving && setDecision(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>

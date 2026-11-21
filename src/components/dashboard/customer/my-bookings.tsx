@@ -47,9 +47,9 @@ export function MyBookings() {
       await apiFetch(`/api/bookings/${id}/cancel`, { method: "PATCH" });
       toast.success("Booking request cancelled");
       closeDialog();
-      reload(); // তালিকা নতুন করে আনি
+      reload(); 
     } catch (err) {
-      // যেমন: "This booking is already accepted and cannot be changed"
+      
       toast.error(err instanceof Error ? err.message : "Could not cancel booking");
       reload();
     } finally {
@@ -64,7 +64,7 @@ export function MyBookings() {
         description="Track the status of your booking requests"
       />
 
-      {/* ফিল্টার */}
+      
       <div className="mb-5 flex flex-wrap gap-2">
         {FILTERS.map((f) => (
           <Button
@@ -79,7 +79,7 @@ export function MyBookings() {
         ))}
       </div>
 
-      {/* লোডিং */}
+     
       {!data && loading && (
         <div className="space-y-3">
           {Array.from({ length: 3 }).map((_, i) => (
@@ -88,7 +88,7 @@ export function MyBookings() {
         </div>
       )}
 
-      {/* এরর */}
+      
       {error && (
         <div className="rounded-xl border border-dashed p-10 text-center">
           <p className="font-medium text-destructive">{error}</p>
@@ -98,7 +98,7 @@ export function MyBookings() {
         </div>
       )}
 
-      {/* খালি অবস্থা */}
+      
       {data && visible.length === 0 && (
         <div className="flex flex-col items-center rounded-xl border border-dashed bg-background p-12 text-center">
           <CalendarX2 className="mb-3 h-10 w-10 text-primary" />
@@ -118,7 +118,7 @@ export function MyBookings() {
         </div>
       )}
 
-      {/* তালিকা */}
+      
       <div className="space-y-3">
         {visible.map((b) => (
           <Card key={b._id} className="py-0">
@@ -162,7 +162,7 @@ export function MyBookings() {
         ))}
       </div>
 
-      {/* বিবরণ ডায়ালগ */}
+      
       <Dialog open={!!selected} onOpenChange={(o) => !o && closeDialog()}>
         <DialogContent className="sm:max-w-lg">
           {selected && (
@@ -202,7 +202,7 @@ export function MyBookings() {
                   </Link>
                 )}
 
-                {/* শুধু pending বুকিং বাতিল করা যায় */}
+                
                 {selected.status === "pending" && !confirming && (
                   <Button variant="destructive" onClick={() => setConfirming(true)}>
                     Cancel Request

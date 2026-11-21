@@ -56,11 +56,10 @@ export function ProfileForm({ initial }: ProfileFormProps) {
 
     setLoading(true);
     try {
-      // নতুন ছবি বাছলে আগে ImgBB-তে আপলোড
+      
       const image = file ? await uploadImage(file) : undefined;
 
-      // শুধু নাম, ছবি, ব্যবসার নাম পাঠাই। role বা subscription এখানে পাঠানোর উপায় নেই
-      // (সার্ভারও এগুলো আটকায়)
+      
       const { error } = await authClient.updateUser({
         name: name.trim(),
         ...(image ? { image } : {}),

@@ -16,7 +16,7 @@ export async function FeaturedServices() {
       />
 
       {services.length === 0 ? (
-        // খালি অবস্থা (বা সার্ভার ডাউন)
+        
         <div className="rounded-xl border border-dashed p-12 text-center text-muted-foreground">
           No services are available right now. Please check back soon.
         </div>
